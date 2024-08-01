@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE2005 Materials</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+        }
+        header {
+            padding: 20px;
+            background-color: #1e1e1e;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            color: #ffffff;
+        }
+        main {
+            padding: 20px;
+            flex-grow: 1;
+            text-align: center;
+        }
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: inline-block;
+            text-align: left;
+        }
+        ul li {
+            margin: 10px 0;
+        }
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .download-button:hover {
+            background-color: #e0e0e0;
+            color: #1e1e1e;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #1e1e1e;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+            padding-top: 20px;
+            left: -250px;
+            transition: left 0.3s;
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #e0e0e0;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+        .show-sidebar {
+            left: 0;
+        }
+        .toggle-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .toggle-button:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="../index.html">Home</a>
+        <!-- Add more subjects as needed -->
+    </div>
+    <button class="toggle-button" id="toggleButton" onclick="toggleSidebar()">☰</button>
+    <div style="margin-left: 0; width: 100%;" id="mainContent">
+        <header>
+            <h1>CSE2005 Materials</h1>
+        </header>
+        <main>
+            <section>
+                <p>Access the materials for CSE2005 <a href="https://drive.google.com/drive/folders/your-folder-id" target="_blank">here</a>.</p>
+            </section>
+            <section>
+                <img src="/Assets/CSE2005.webp" class="center" width="800" alt="CSE2005">
+            </section>
+            <section>
+                <h2>Syllabus</h2>
+                <ul>
+                    <li><a href="https://docs.google.com/document/d/1toxd0lP1-FFMVaegTe8yjK05evwBOtx8/edit?usp=drive_link&ouid=108437768210689147192&rtpof=true&sd=true" target="_blank">Syllabus</a></li>
+                </ul>
+
+                <h2>Files</h2>
+                <ul>
+                    <li><a href="https://drive.google.com/file/d/your-file-id-1/view" target="_blank">Lecture 1: Introduction</a></li>
+                    <li><a href="https://drive.google.com/file/d/your-file-id-2/view" target="_blank">Lecture 2: Advanced Topics</a></li>
+                    <li><a href="https://drive.google.com/file/d/your-file-id-3/view" target="_blank">Lecture 3: Practical Applications</a></li>
+                    <!-- Add more files as needed -->
+                </ul>
+                
+            </section>
+            <section>
+                <h2>Download All Materials</h2>
+                <a href="https://drive.google.com/uc?export=download&id=your-zip-file-id" class="download-button" target="_blank">Download Zip File</a>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var mainContent = document.getElementById("mainContent");
+            var toggleButton = document.getElementById("toggleButton");
+
+            if (sidebar.classList.contains("show-sidebar")) {
+                sidebar.classList.remove("show-sidebar");
+                mainContent.style.marginLeft = "0";
+                mainContent.style.width = "100%";
+                toggleButton.style.left = "20px";
+            } else {
+                sidebar.classList.add("show-sidebar");
+                mainContent.style.marginLeft = "260px";
+                mainContent.style.width = "calc(100% - 260px)";
+                toggleButton.style.left = "260px";
+            }
+        }
+
+        // Ensure the sidebar is hidden by default on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.remove("show-sidebar");
+        });
+    </script>
+</body>
+</html>
