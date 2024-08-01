@@ -4,68 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>University Materials</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
     <style>
         body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #c0c0c0;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
         }
         header {
             padding: 20px;
-            background-color: #1e1e1e;
+            background: linear-gradient(135deg, #1a1a1a, #333333);
             width: 100%;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            z-index: 1000;
         }
         h1 {
             margin: 0;
             color: #ffffff;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         main {
-            padding: 20px;
+            padding: 120px 20px 20px; /* Increased top padding to avoid overlap */
             flex-grow: 1;
             text-align: center;
+            width: 100%;
+            
+            box-sizing: content-box;
         }
         a {
-            color: #1e90ff;
+            color: #c0c0c0;
             text-decoration: none;
+            transition: color 0.3s;
         }
         a:hover {
-            text-decoration: underline;
+            color: #b3b3b3;
         }
         section {
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
         ul {
             list-style-type: none;
             padding: 0;
-            display: inline-block;
-            text-align: left;
         }
         ul li {
-            margin: 10px 0;
+            margin: 15px 0;
+            background: rgba(192, 192, 192, 0.1);
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: transform 0.3s, background 0.3s;
+        }
+        ul li:hover {
+            transform: translateY(-5px);
+            background: rgba(192, 192, 192, 0.2);
         }
         .sidebar {
             width: 250px;
-            background-color: #1e1e1e;
+            background: linear-gradient(135deg, #1a1a1a, #333333);
             position: fixed;
             height: 100%;
             overflow: auto;
-            padding-top: 20px;
+            padding-top: 60px;
             left: -250px;
-            transition: left 0.3s;
+            transition: left 0.5s ease;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .sidebar a {
-            padding: 10px 15px;
+            padding: 15px 20px;
             text-decoration: none;
-            font-size: 18px;
-            color: #e0e0e0;
+            font-size: 1rem;
+            color: #c0c0c0;
             display: block;
+            transition: background 0.3s;
+            text-align: center;
         }
         .sidebar a:hover {
-            background-color: #575757;
+            background: rgba(192, 192, 192, 0.2);
         }
         .show-sidebar {
             left: 0;
@@ -74,45 +100,82 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            background-color: #1e1e1e;
-            color: #e0e0e0;
+            background-color: #b3b3b3;
+            color: #000000;
             border: none;
             padding: 10px 15px;
             cursor: pointer;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            transition: transform 0.3s;
         }
         .toggle-button:hover {
-            background-color: #575757;
+            transform: scale(1.1);
         }
         .filter {
             margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .filter label, .filter select {
+            margin: 5px 0;
         }
         .filter select {
             padding: 10px;
             border: none;
             border-radius: 5px;
-            background-color: #1e1e1e;
-            color: #e0e0e0;
+            background-color: #1a1a1a;
+            color: #c0c0c0;
             cursor: pointer;
+            transition: background 0.3s;
+        }
+        .filter select:hover {
+            background-color: #1a1a1a;
+        }
+        .dark-mode {
+            background-color: #f4f4f4a5;
+            color: #000000;
+        }
+        .dark-mode a {
+            color: #000000;
+        }
+        .dark-mode header {
+            background: linear-gradient(135deg, #333333, #444444);
+        }
+        .dark-mode .sidebar {
+            background: linear-gradient(135deg, #333333, #444444);
+        }
+        .made-by {
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #c0c0c0;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="sidebar" id="sidebar">
-        <a href="index.html">Home</a>
-        <a href="subjects/CSE2001.html" data-year="Second Year">B.TECH</a>
-        <a href="subjects/CSE1022.html" data-year="First Year">CSE1022</a>
-        <a href="subjects/CSE3002.html" data-year="Third Year">CSE3002</a>
-        <a href="subjects/MAT1003.html" data-year="First Year">MAT1003</a>
-        <a href="subjects/MGT1040.html" data-year="Second Year">MGT1040</a>
-        <a href="subjects/STS208.html" data-year="Fourth Year">STS208</a>
-        <!-- Add more subjects as needed -->
+        <div>
+            <a href="index.html">Home</a>
+            <a href="subjects/CSE2001.html" data-year="Second Year" data-department="CSE">B.TECH</a>
+            <a href="subjects/CSE1022.html" data-year="First Year" data-department="CSE">CSE1022</a>
+            <a href="subjects/CSE3002.html" data-year="Third Year" data-department="CSE">CSE3002</a>
+            <a href="subjects/MAT1003.html" data-year="First Year" data-department="CIVIL">MAT1003</a>
+            <a href="subjects/MGT1040.html" data-year="Second Year" data-department="MECH">MGT1040</a>
+            <a href="subjects/STS208.html" data-year="Fourth Year" data-department="ECE">STS208</a>
+            <!-- Add more subjects as needed -->
+        </div>
+        <div class="made-by">Made by Shreeniwas</div>
     </div>
     <button class="toggle-button" id="toggleButton" onclick="toggleSidebar()">☰</button>
     <div style="margin-left: 0; width: 100%;" id="mainContent">
         <header>
-            <h1>Welcome to the University Materials Library</h1>
+            <h1>Welcome to the University Materials</h1>
+            <div class="made-by">Made by Shreeniwas</div>
         </header>
         <main>
             <section class="filter">
@@ -124,31 +187,26 @@
                     <option value="Third Year">Third Year</option>
                     <option value="Fourth Year">Fourth Year</option>
                 </select>
+                <label for="departmentFilter">Filter by Department:</label>
+                <select id="departmentFilter" onchange="filterSubjects()">
+                    <option value="All">All</option>
+                    <option value="CSE">CSE</option>
+                    <option value="ECE">ECE</option>
+                    <option value="MECH">MECH</option>
+                    <option value="CIVIL">CIVIL</option>
+                    <!-- Add more departments as needed -->
+                </select>
             </section>
             
             <section>
                 <h2>Subjects</h2>
                 <ul id="subjectList">
-                    <li data-year="Second Year"><a href="CSE2001.html">CSE2001</a></li>
-                    <li data-year="Second Year"><a href="subjects/CSE1022.html">CSE1022</a></li>
-                    <li data-year="Second Year"><a href="subjects/CSE3002.html">CSE3002</a></li>
-                    <li data-year="Second Year"><a href="subjects/MAT1003.html">MAT1003</a></li>
-                    <li data-year="Second Year"><a href="subjects/MGT1040.html">MGT1040</a></li>
-                    <li data-year="Second Year"><a href="subjects/STS208.html">STS2008</a></li>
-
-                    <li data-year="First Year"><a href="subjects/CSE1022.html">CHY1009</a></li>
-                    <li data-year="First Year"><a href="subjects/CSE1022.html">CSE2005</a></li>
-                    <li data-year="First Year"><a href="subjects/CSE1022.html">ECE1003</a></li>
-                    <li data-year="First Year"><a href="subjects/CSE1022.html">ENG1002</a></li>
-                    <li data-year="First Year"><a href="subjects/CSE1022.html">MAT1002</a></li>
-                    <li data-year="First Year"><a href="subjects/CSE1022.html">STS1009</a></li>
-
-                    <li data-year="First Year"><a href="subjects/CSE1022.html">CSE1012</a></li>
-                    <li data-year="First Year"><a href="subjects/CSE1022.html">ECE1002</a></li>
-                    <li data-year="First Year"><a href="subjects/CSE1022.html">ENG1001</a></li>
-                    <li data-year="First Year"><a href="subjects/CSE1022.html">MAT1001</a></li>
-                    <li data-year="First Year"><a href="subjects/CSE1022.html">PHY1008</a></li>
-                    <li data-year="First Year"><a href="subjects/CSE1022.html">STS1004</a></li>
+                    <li data-year="First Year" data-department="CSE"><a href="subjects/CSE2001.html">CSE2001</a></li>
+                    <li data-year="First Year" data-department="CSE"><a href="subjects/CHY1009.html">CHY1009</a></li>
+                    <li data-year="First Year" data-department="CSE"><a href="subjects/CSE2005.html">CSE2005</a></li>
+                    <li data-year="First Year" data-department="CSE"><a href="subjects/ECE1003.html">ECE1003</a></li>
+                    <li data-year="First Year" data-department="CSE"><a href="subjects/ENG1002.html">ENG1002</a></li>
+                    <li data-year="First Year" data-department="CSE"><a href="subjects/MAT1002.html">MAT1002</a></li>
                     
                     <!-- Add more subjects as needed -->
                 </ul>
@@ -176,10 +234,13 @@
         }
 
         function filterSubjects() {
-            var filter = document.getElementById("yearFilter").value;
+            var yearFilter = document.getElementById("yearFilter").value;
+            var departmentFilter = document.getElementById("departmentFilter").value;
             var subjects = document.querySelectorAll("#subjectList li");
             subjects.forEach(function(subject) {
-                if (filter === "All" || subject.getAttribute("data-year") === filter) {
+                var yearMatch = (yearFilter === "All" || subject.getAttribute("data-year") === yearFilter);
+                var departmentMatch = (departmentFilter === "All" || subject.getAttribute("data-department") === departmentFilter);
+                if (yearMatch && departmentMatch) {
                     subject.style.display = "list-item";
                 } else {
                     subject.style.display = "none";
@@ -191,6 +252,40 @@
         document.addEventListener("DOMContentLoaded", function() {
             var sidebar = document.getElementById("sidebar");
             sidebar.classList.remove("show-sidebar");
+
+            // Apply dark mode if previously set
+            if (localStorage.getItem('dark-mode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        // Dark mode toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.createElement('button');
+            toggleButton.id = 'darkModeToggle';
+            toggleButton.innerText = 'Toggle Dark Mode';
+            toggleButton.style.position = 'fixed';
+            toggleButton.style.bottom = '20px';
+            toggleButton.style.right = '20px';
+            toggleButton.style.backgroundColor = '#b3b3b3';
+            toggleButton.style.color = '#000000';
+            toggleButton.style.border = 'none';
+            toggleButton.style.padding = '10px 15px';
+            toggleButton.style.cursor = 'pointer';
+            toggleButton.style.borderRadius = '5px';
+            toggleButton.style.fontSize = '1.2rem';
+            toggleButton.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.3)';
+            toggleButton.style.zIndex = '1001';
+            document.body.appendChild(toggleButton);
+
+            toggleButton.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('dark-mode', 'enabled');
+                } else {
+                    localStorage.setItem('dark-mode', 'disabled');
+                }
+            });
         });
     </script>
 </body>
