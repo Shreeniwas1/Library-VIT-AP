@@ -1,4 +1,4 @@
-# All-Material-VIT-AP
+# All-Material-VIT-AP ( old-project_for_learning_purposes_what_not_to_do_ ) 
 
 New things will be added here. 
 # currently only syllabus links are working. 
