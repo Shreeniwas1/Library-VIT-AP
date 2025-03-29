@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
             align-items: center;
             overflow-x: hidden;
         }
+
         header {
             padding: 20px;
             background: linear-gradient(135deg, #1a1a1a, #333333);
@@ -26,6 +28,7 @@
             top: 0;
             z-index: 1000;
         }
+
         h1 {
             margin: 0;
             color: #ffffff;
@@ -33,29 +36,36 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
+
         main {
-            padding: 120px 20px 20px; /* Increased top padding to avoid overlap */
+            padding: 120px 20px 20px;
+            /* Increased top padding to avoid overlap */
             flex-grow: 1;
             text-align: center;
             width: 100%;
-            
+
             box-sizing: content-box;
         }
+
         a {
             color: #c0c0c0;
             text-decoration: none;
             transition: color 0.3s;
         }
+
         a:hover {
             color: #b3b3b3;
         }
+
         section {
             margin-bottom: 40px;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
+
         ul li {
             margin: 15px 0;
             background: rgba(192, 192, 192, 0.1);
@@ -63,10 +73,12 @@
             border-radius: 5px;
             transition: transform 0.3s, background 0.3s;
         }
+
         ul li:hover {
             transform: translateY(-5px);
             background: rgba(192, 192, 192, 0.2);
         }
+
         .sidebar {
             width: 250px;
             background: linear-gradient(135deg, #1a1a1a, #333333);
@@ -81,6 +93,7 @@
             flex-direction: column;
             justify-content: space-between;
         }
+
         .sidebar a {
             padding: 15px 20px;
             text-decoration: none;
@@ -90,12 +103,15 @@
             transition: background 0.3s;
             text-align: center;
         }
+
         .sidebar a:hover {
             background: rgba(192, 192, 192, 0.2);
         }
+
         .show-sidebar {
             left: 0;
         }
+
         .toggle-button {
             position: fixed;
             top: 20px;
@@ -111,9 +127,11 @@
             z-index: 1001;
             transition: transform 0.3s;
         }
+
         .toggle-button:hover {
             transform: scale(1.1);
         }
+
         .filter {
             margin: 20px 0;
             display: flex;
@@ -121,9 +139,12 @@
             gap: 10px;
             flex-wrap: wrap;
         }
-        .filter label, .filter select {
+
+        .filter label,
+        .filter select {
             margin: 5px 0;
         }
+
         .filter select {
             padding: 10px;
             border: none;
@@ -133,22 +154,28 @@
             cursor: pointer;
             transition: background 0.3s;
         }
+
         .filter select:hover {
             background-color: #1a1a1a;
         }
+
         .dark-mode {
             background-color: #f4f4f4a5;
             color: #000000;
         }
+
         .dark-mode a {
             color: #000000;
         }
+
         .dark-mode header {
             background: linear-gradient(135deg, #333333, #444444);
         }
+
         .dark-mode .sidebar {
             background: linear-gradient(135deg, #333333, #444444);
         }
+
         .made-by {
             padding: 20px;
             font-size: 0.9rem;
@@ -157,6 +184,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="sidebar" id="sidebar">
         <div>
@@ -178,6 +206,8 @@
             <div class="made-by">Made by Shreeniwas</div>
         </header>
         <main>
+            <br>
+            <code>this is future me. Looking at this website I can see how much my skills lacked at that time I could have created the single course page and then used the database to integrate all the subjects along with API s for the same  </code>
             <section class="filter">
                 <label for="yearFilter">Filter by Year:</label>
                 <select id="yearFilter" onchange="filterSubjects()">
@@ -196,7 +226,7 @@
                     <!-- Add more departments as needed -->
                 </select>
             </section>
-            
+
             <section>
                 <h2>Subjects</h2>
                 <ul id="subjectList">
@@ -212,7 +242,7 @@
                     <li data-year="First Year" data-department="CSE"><a href="subjects/ECE1002.html">ECE1002</a></li>
                     <li data-year="First Year" data-department="CSE"><a href="subjects/MAT1001.html">MAT1001</a></li>
                     <li data-year="First Year" data-department="CSE"><a href="subjects/ENG1001.html">ENG1001</a></li>
-                    
+
                     <!-- Add more subjects as needed -->
                 </ul>
             </section>
@@ -242,7 +272,7 @@
             var yearFilter = document.getElementById("yearFilter").value;
             var departmentFilter = document.getElementById("departmentFilter").value;
             var subjects = document.querySelectorAll("#subjectList li");
-            subjects.forEach(function(subject) {
+            subjects.forEach(function (subject) {
                 var yearMatch = (yearFilter === "All" || subject.getAttribute("data-year") === yearFilter);
                 var departmentMatch = (departmentFilter === "All" || subject.getAttribute("data-department") === departmentFilter);
                 if (yearMatch && departmentMatch) {
@@ -254,7 +284,7 @@
         }
 
         // Ensure the sidebar is hidden by default on page load
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             var sidebar = document.getElementById("sidebar");
             sidebar.classList.remove("show-sidebar");
 
@@ -294,4 +324,5 @@
         });
     </script>
 </body>
+
 </html>
